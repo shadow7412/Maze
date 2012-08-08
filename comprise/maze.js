@@ -52,7 +52,7 @@ function relabel(){
 	.each(function(i,e){
 		e.className = i;
 		$(e).children().each(function(i,e){
-			e.id = "c"+$(e).parent()[0].className+"r"+i;
+			e.id = $(e).parent()[0].className+"r"+i;
 			e.onmouseover="mouseOver(this)";
 			e.onmousedown="mouseDown(this)";
 		});
@@ -80,6 +80,7 @@ function mouseOver(e){
 }
 function mouseUp(){
 	mouse.dragging = false;
+	check();
 }
 function addUp(){
 	var m = $("#maze")
@@ -159,16 +160,70 @@ function importLevel(){
 	return true;
 }
 function check(){
-	var w = $("#warnings")[0];
+	var w = $("#warnings").removeClass("error")[0];
 	w.innerHTML = "";
 	var p = [];
+	
 	//1 spawn point
-	if($("#maze .spawn").length!=1) p.push("Needs 1 spawn point");
-	//1 exit
-	if($("#maze .exit").length!=1) p.push("Needs 1 exit");
+	var e = $("#maze .spawn")//for jq objects
+	var l = e.length;// a foor lengths
+	if(l==0) p.push("Needs a spawn point");
+	else if(l<4) p.push("Spawn must be 2X2");
+	else if(l>4) p.push("There can only be one spawn");
+	else if(!is2x2(e)) p.push("Spawn blocks must be 2X2");
+	
+	//1 spawn point
+	e = $("#maze .exit")//for jq objects
+	l = e.length;// a foor lengths
+	if(l==0) p.push("Needs an exit point");
+	else if(l<4) p.push("Exit must be 2X2");
+	else if(l>4) p.push("There can only be one exit");
+	else if(!is2x2(e)) p.push("Exit must be 2X2");
+
 	if(p.length==0) p.push("No errors");
-	p.push("<button onclick=\"check()\">Check</button>");
+	else $(w).addClass("error");
+	//p.push("<button onclick=\"check()\">Check</button>");
 	w.innerHTML = p.join('<br/>');
+}
+function is2x2(e){
+	if(e.length%4!=0) return false;
+	for(var i=0;i<e.length;i++){
+		var t = e[i].className;
+		var c = e[i].id.match(/(\d*)r(\d*)/);
+		c[1] = parseInt(c[1]);
+		c[2] = parseInt(c[2]);
+		if((b = document.getElementById(c[1]+"r"+(c[2]+1)))!=null && b.className==t) { //check top
+			if(b = document.getElementById(c[1]+1+"r"+(c[2]+1))!=null && b.className==t)//check left
+				return true;
+			else if(b = document.getElementById(c[1]-1+"r"+(c[2]+1))!=null && b.className==t)//check right
+				return true;
+			else return false;
+		} else if((b = document.getElementById(c[1]+"r"+(c[2]-1)))!=null && b.className==t) { //check top
+			if(b = document.getElementById(c[1]+1+"r"+(c[2]-1))!=null && b.className==t)//check left
+				return true;
+			else if(b = document.getElementById(c[1]-1+"r"+(c[2]-1))!=null && b.className==t)//check right
+				return true;
+			else return false;
+		} else return false; //... Is this a 1x1 grid lol?
+	}
+}
+function is2x1(e){
+	if(e.length<2) return false;
+	for(var i=0;i<e.length;i++){
+		var t = e[i].className;
+		var c = e[i].id.match(/(\d*)r(\d*)/);
+		c[1] = parseInt(c[1]);
+		c[2] = parseInt(c[2]);
+		if((b = document.getElementById(c[1]+"r"+(c[2]+1)))!=null && b.className==t)
+			return true;//check top
+		if((b = document.getElementById(c[1]+"r"+(c[2]-1)))!=null && b.className==t)
+			return true;//check bottom
+		if((b = document.getElementById(c[1]+1+"r"+(c[2])))!=null && b.className==t)
+			return true;//check left
+		if((b = document.getElementById(c[1]-1+"r"+(c[2])))!=null && b.className==t)
+			return true;//check right
+		return false
+	}
 }
 //capture Ctrl S and Z to save (on some browsers)
 $(document).keydown(function(event) {
@@ -184,6 +239,18 @@ $(document).keydown(function(event) {
 				error("Could not load. Try saving first!");
 		event.preventDefault();
 		return false;
+	} else if(String.fromCharCode(event.which).toLowerCase() == 'q'){
+		brush($("#paint").children()[0]);
+	} else if(String.fromCharCode(event.which).toLowerCase() == 'w'){
+		brush($("#paint").children()[1]);
+	} else if(String.fromCharCode(event.which).toLowerCase() == 'e'){
+		brush($("#paint").children()[2]);
+	} else if(String.fromCharCode(event.which).toLowerCase() == 'a'){
+		brush($("#paint").children()[3]);
+	} else if(String.fromCharCode(event.which).toLowerCase() == 's'){
+		brush($("#paint").children()[4]);
+	} else if(String.fromCharCode(event.which).toLowerCase() == 'd'){
+		brush($("#paint").children()[5]);
 	} else {
 		return true;
 	}

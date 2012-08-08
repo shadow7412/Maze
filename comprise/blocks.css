@@ -51,6 +51,9 @@
 	margin-left:5px;
 	display:inline-block;
 }
+#pallet .error{
+	color:red;
+}
 #error{
 	float:right;
 	color:red;
