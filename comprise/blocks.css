@@ -7,8 +7,10 @@
 #maze div span, #pallet span{
 	border: solid 1px;
 	width:20px;
+	min-width:20px;
 	height:20px;
 	display:table-cell;
+	background: #ECEADF url(images/ui-bg_fine-grain_10_eceadf_60x60.png) 50% 50% repeat
 }
 #maze div span:hover, #pallet span:hover{
 	border:solid 1px #f00;
@@ -24,4 +26,14 @@
 }
 #pallet {
 	border:solid 2px;
+	text-align:center;
+}
+#pallet span{
+	padding:5px;
+	
+}
+textarea {
+	width:100%;
+	min-height:800px;
+	font-family: Courier, monospace!important;
 }
