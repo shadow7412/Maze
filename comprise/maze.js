@@ -44,6 +44,7 @@ function generate(r,c){
 	}
 	$("#maze").html(grid);
 	relabel();
+	check();
 }
 function relabel(){
 	$("#maze span").unbind();
@@ -154,14 +155,38 @@ function importLevel(){
 		return false; //
 	}
 	relabel();
+	check();
 	return true;
 }
-//capture Ctrl S to save (on some browsers)
+function check(){
+	var w = $("#warnings")[0];
+	w.innerHTML = "";
+	var p = [];
+	//1 spawn point
+	if($("#maze .spawn").length!=1) p.push("Needs 1 spawn point");
+	//1 exit
+	if($("#maze .exit").length!=1) p.push("Needs 1 exit");
+	if(p.length==0) p.push("No errors");
+	p.push("<button onclick=\"check()\">Check</button>");
+	w.innerHTML = p.join('<br/>');
+}
+//capture Ctrl S and Z to save (on some browsers)
 $(document).keydown(function(event) {
-    if (!( String.fromCharCode(event.which).toLowerCase() == 's' && event.ctrlKey) && !(event.which == 19)) return true;
-    saveToCookie();
-    event.preventDefault();
-    return false;
+    if (String.fromCharCode(event.which).toLowerCase() == 's' && event.ctrlKey){
+		saveToCookie();
+		event.preventDefault();
+		return false;
+    } else if (String.fromCharCode(event.which).toLowerCase() == 'z' && event.ctrlKey){
+		if(confirm("Are you sure you want to try and load the last save?"))
+			if(loadFromCookie())
+				error("Load successful");
+			else
+				error("Could not load. Try saving first!");
+		event.preventDefault();
+		return false;
+	} else {
+		return true;
+	}
 });
 function saveToCookie(){
 	exportLevel();
