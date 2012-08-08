@@ -1,0 +1,27 @@
+#maze {
+	display:table;
+}
+#maze div{
+	display:table-row;
+}
+#maze div span, #pallet span{
+	border: solid 1px;
+	width:20px;
+	height:20px;
+	display:table-cell;
+}
+#maze div span:hover, #pallet span:hover{
+	border:solid 1px #f00;
+}
+#pallet span.active{
+	border:solid 1px #0f0;
+}
+#maze div span.wall, #pallet .wall{
+	background:#666;
+}
+#maze div span.floor, #pallet .floor{
+	background:#fff;
+}
+#pallet {
+	border:solid 2px;
+}

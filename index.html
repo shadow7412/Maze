@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Maze Editor</title>
+<link rel="stylesheet" type="text/css" id="tabcss" href="comprise/blocks.css" />
+<link rel="stylesheet" type="text/css" id="tabcss" href="comprise/jquery-ui-1.8.22.custom.css" />
+<script src="comprise/jquery-1.7.2.min.js"></script>
+<script src="comprise/jquery-ui-1.8.22.custom.min.js"></script>
+<script src="comprise/maze.js"></script>
+</head>
+<body onmouseup="mouseUp()">
+<div id="tabs">
+	<ul>
+		<li><a href="#setup">Setup</a></li>
+		<li><a href="#craft">Craft</a></li>
+		<li><a href="#output">Output</a></li>
+	</ul>
+	<div id="setup">
+		Generate Maze:</br>
+		This will delete any progress you have made (if any)!!<br/>
+		<form onsubmit="generate(this.col.value,this.row.value); $('#tabs').tabs('select', 1);return false;">
+			Columns: <input name="col" value="20"><br/>
+			Rows:<input name="row" value="20"/><br/>
+			<input type="submit" value="Generate"/>
+		</form>
+	</div>
+	<div id="craft">
+		<div id="pallet">
+			<span title="Empty" onmousedown="brush(this)"></span>
+			<span title="Wall" class="wall" onmousedown="brush(this)"></span>
+			<span title="Floor" class="floor" onmousedown="brush(this)"></span>
+		</div>
+		<div id="maze"></div>
+	</div>
+	<div id="output">
+	TODO.
+	</div>
+</div>
+</body>
+</html>
