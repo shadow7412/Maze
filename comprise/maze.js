@@ -1,5 +1,10 @@
 $(function() {
-	$("#tabs").tabs();
+	$("#tabs").tabs({
+		select:function(event,ui){
+			if(ui.index==1) 
+				$("#pallet").dialog({width:150,closeOnEscape:false, title:"Tools"}); else $("#pallet").dialog("close");
+			}
+	});
 });
 function d(a){
 	console.log(a)
@@ -34,7 +39,7 @@ function relabel(){
 	});
 }
 function brush(e){
-	$("#pallet").children().removeClass("active");
+	$(e).siblings().removeClass("active");
 	mouse.type = e.className;
 	$(e).addClass("active");
 }
@@ -84,6 +89,7 @@ function exportLevel(){
 	$("textarea")[0].value = data;
 }
 function importLevel(){
+	var backup = $("#maze")[0].innerHTML;
 	$("#maze").html("<div>"+
 		$.map($("textarea")[0].value.split(''),function(n){
 			if(n=="\n") return "</div><div>";
@@ -96,6 +102,19 @@ function importLevel(){
 			return "<span class=\""+data+"\"></span>";
 		}).join('')
 	+"</div>");
+	importLevel.count = 0;
+	$("#maze").children().each(function(i,e){
+		var l = $(e).children().length;
+		if(importLevel.count==0) importLevel.count = l;
+		else if(importLevel.count!=l){
+			importLevel.count=0;
+			return false;
+		}
+	});
+	if(importLevel.count==0){
+		$("#maze").html(backup);
+		return false;
+	}
 	relabel();
 	return true;
 }

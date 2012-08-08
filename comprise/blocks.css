@@ -10,13 +10,13 @@
 	min-width:20px;
 	height:20px;
 	display:table-cell;
-	background: #ECEADF url(images/ui-bg_fine-grain_10_eceadf_60x60.png) 50% 50% repeat
+	background: #FDC;
 }
 #maze div span:hover, #pallet span:hover{
 	border:solid 1px #f00;
 }
 #pallet span.active{
-	border:solid 1px #0f0;
+	border:solid 2px #0f0;
 }
 #maze div span.wall, #pallet .wall{
 	background:#666;
@@ -24,16 +24,24 @@
 #maze div span.floor, #pallet .floor{
 	background:#fff;
 }
-#pallet {
+#pallet{
+	font-size:10px;
+}
+#pallet div{
 	border:solid 2px;
+	padding:3px;
 	text-align:center;
 }
 #pallet span{
 	padding:5px;
-	
+	margin-left:5px;
+	display:inline-block;
 }
 textarea {
 	width:100%;
 	min-height:800px;
 	font-family: Courier, monospace!important;
+}
+.ui-dialog-titlebar-close {
+  visibility: hidden!important;
 }

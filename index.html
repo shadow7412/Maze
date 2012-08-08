@@ -13,27 +13,32 @@
 	<ul>
 		<li><a href="#setup">Setup</a></li>
 		<li><a href="#craft">Craft</a></li>
-		<li><a href="#output" onclick="exportLevel()">Output</a></li>
+		<li><a href="#output" onclick="exportLevel()">Export</a></li>
 	</ul>
 	<div id="setup">
 		Generate Maze:</br>
 		This will delete any progress you have made (if any)!!<br/>
 		<form onsubmit="generate(this.col.value,this.row.value); $('#tabs').tabs('select', 1);return false;">
-			Columns: <input name="col" value="20"><br/>
-			Rows:<input name="row" value="20"/><br/>
-			<input type="submit" value="Generate"/>
+			<table>
+			<tr><td>Columns:</td><td><input name="col" value="20"></td></tr>
+			<tr><td>Rows:</td><td><input name="row" value="20"/></td></tr>
+			<tr><td></td><td><input type="submit" value="Generate"/></td></tr>
+			</table>
 		</form>
 	</div>
 	<div id="craft">
 		<div id="pallet">
-			<span title="Empty" onmousedown="brush(this)"></span>
-			<span title="Wall" class="wall" onmousedown="brush(this)"></span>
-			<span title="Floor" class="floor" onmousedown="brush(this)"></span>
+			Paint:
+			<div>
+				<span title="Empty" onmousedown="brush(this)"></span>
+				<span title="Wall" class="wall active" onmousedown="brush(this)"></span>
+				<span title="Floor" class="floor" onmousedown="brush(this)"></span>
+			</div>
 		</div>
-		<div id="maze"></div>
+		<div id="maze">Generate a map in the Setup tab - or load one in the Export tab :)</div>
 	</div>
 	<div id="output">
-		<button onclick="if(importLevel())$('#tabs').tabs('select',1);return false;">Import to editor</button>
+		<button onclick="if(importLevel()) $('#tabs').tabs('select',1); else alert('The columns don\'t line up!');return false;">Import to editor</button>
 		<textarea></textarea>
 	</div>
 </div>
