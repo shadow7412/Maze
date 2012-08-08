@@ -24,6 +24,15 @@
 #maze div span.floor, #pallet .floor{
 	background:#fff;
 }
+#maze div span.spawn, #pallet .spawn{
+	background:#aaa;
+}
+#maze div span.exit, #pallet .exit{
+	background:#0f0;
+}
+#maze div span.deathzone, #pallet .deathzone{
+	background:#f00;
+}
 #pallet{
 	font-size:10px;
 }

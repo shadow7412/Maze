@@ -22,7 +22,10 @@ var mouse = {
 var blocks = {
 	"":"_",
 	"wall":"@",
-	"floor":"#"
+	"floor":"#",
+	"spawn":"S",
+	"exit":"E",
+	"deathzone":"*"
 }
 function invert(obj) {
 	var new_obj = {};
