@@ -14,6 +14,7 @@
 		<li><a href="#setup">Setup</a></li>
 		<li><a href="#craft">Craft</a></li>
 		<li><a href="#output" onclick="exportLevel()">Export</a></li>
+		<li id="error"></li>
 	</ul>
 	<div id="setup">
 		Generate Maze:</br>
@@ -34,11 +35,24 @@
 				<span title="Wall" class="wall active" onmousedown="brush(this)"></span>
 				<span title="Floor" class="floor" onmousedown="brush(this)"></span>
 			</div>
+			Add row/column
+			<div>
+			<button onclick="addUp()">Up</button>
+			<button onclick="addDown()">Down</button>
+			<button onclick="addLeft()">Left</button>
+			<button onclick="addRight()">Right</button>
+			</div>
+			Quicksave:
+			<div>
+				<button onclick="saveToCookie()">Save</button>
+				<button onclick="if(loadFromCookie())error('Level Loaded!');else error('Level couldn\'t be loaded!')">Load</button>
+				<button onclick="error('Save cleared!');eraseCookie('mazelevel')">Delete</button>
+			</div>
 		</div>
 		<div id="maze">Generate a map in the Setup tab - or load one in the Export tab :)</div>
 	</div>
 	<div id="output">
-		<button onclick="if(importLevel()) $('#tabs').tabs('select',1); else alert('The columns don\'t line up!');return false;">Import to editor</button>
+		<button onclick="if(importLevel()) $('#tabs').tabs('select',1); else error('The columns don\'t line up!');return false;">Import to editor</button>
 		<textarea></textarea>
 	</div>
 </div>

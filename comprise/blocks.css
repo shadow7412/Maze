@@ -37,6 +37,10 @@
 	margin-left:5px;
 	display:inline-block;
 }
+#error{
+	float:right;
+	color:red;
+}
 textarea {
 	width:100%;
 	min-height:800px;
