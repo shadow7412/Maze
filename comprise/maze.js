@@ -175,6 +175,9 @@ function check(){
 	w.innerHTML = "";
 	var p = [];
 	
+	//Floor
+	if($("#maze .floor").length==0) p.push("There is no floor");
+	
 	//1 spawn point
 	var e = $("#maze .spawn")//for jq objects
 	var l = e.length;// a foor lengths
@@ -190,7 +193,15 @@ function check(){
 	else if(l<4) p.push("Exit must be 2X2");
 	else if(l>4) p.push("There can only be one exit");
 	else if(!is2x2(e)) p.push("Exit must be 2X2");
-
+	
+	//each key has at least 1 door
+	var keytypes = ['A','B']
+	for(a in keytypes){
+		if($("#maze .key."+keytypes[a]).length!=0 && $("#maze .door."+keytypes[a]).length==0)
+			p.push("Key "+keytypes[a]+" has no door");
+		else if($("#maze .door."+keytypes[a]).length!=0 && $("#maze .key."+keytypes[a]).length==0)
+			p.push("Door "+keytypes[a]+" has no key");
+	}
 	if(p.length==0) p.push("No errors");
 	else $(w).addClass("error");
 	//p.push("<button onclick=\"check()\">Check</button>");
