@@ -8,6 +8,7 @@
 }
 #maze div{
 	display:table-row;
+	text-align:center;
 }
 #maze div span, #pallet span{
 	border: solid 1px;
@@ -38,11 +39,22 @@
 #maze div span.deathzone, #pallet .deathzone{
 	background:#f00;
 }
-#maze div span.door1, #pallet .door1{
-	background:#990;
+#maze div span.door.open, #pallet .door.open{
+	background:#cd853f;
 }
-#maze div span.key1, #pallet .key1{
+#maze div span.door.closed, #pallet .door.closed{
+	background:#8b4513;
+}
+#maze div span.key, #pallet .key{
 	background:#ff0;
+}
+#maze div span.A:before{
+	font-size:13px;
+	content:"A";
+}
+#maze div span.B:before{
+	font-size:13px;
+	content:"B";
 }
 #maze div span.break, #pallet .break{
 	background:#aaa;

@@ -26,8 +26,13 @@ var blocks = {
 	"spawn":"S",
 	"exit":"E",
 	"break":"%",
-	"key1":"A",
-	"door1":"a",
+	//key/doors
+	"door open A":"a",
+	"door closed A":"A",
+	"key A":"à",
+	"door open B":"b",
+	"door closed B":"B",
+	"key B":"ß",
 	"deathzone":"*"
 }
 function invert(obj) {
@@ -72,7 +77,8 @@ function relabel(){
 //Manipulation
 function brush(e){
 	$(e).siblings().removeClass("active");
-	mouse.type = e.className;
+	if(e.className.search("door")!=-1 || e.className.search("key")!=-1) mouse.type = e.className+" "+document.getElementById("doortype").value;
+	else mouse.type = e.className;
 	$(e).addClass("active");
 }
 function mouseDown(e){
