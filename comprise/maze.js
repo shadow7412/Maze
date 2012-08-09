@@ -3,7 +3,7 @@ $(function() {
 	$("#tabs").tabs({
 		select:function(event,ui){
 			if(ui.index==1) 
-				$("#pallet").dialog({width:180,closeOnEscape:false, title:"Tools"}); else $("#pallet").dialog("close");
+				$("#pallet").dialog({width:180,closeOnEscape:false, resizable:false ,title:"Tools"}); else $("#pallet").dialog("close");
 			}
 	});
 	if(loadFromCookie()) $("#tabs").tabs('select',1);
