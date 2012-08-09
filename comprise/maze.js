@@ -230,7 +230,7 @@ function is2x1(e){
 		return false
 	}
 }
-//capture Ctrl S and Z to save (on some browsers)
+//Keys
 $(document).keydown(function(event) {
     if (String.fromCharCode(event.which).toLowerCase() == 's' && event.ctrlKey){
 		saveToCookie();
@@ -256,6 +256,12 @@ $(document).keydown(function(event) {
 		brush($("#paint").children()[4]);
 	} else if(String.fromCharCode(event.which).toLowerCase() == 'd'){
 		brush($("#paint").children()[5]);
+	} else if(String.fromCharCode(event.which).toLowerCase() == 'z'){
+		brush($("#paint").children()[6]);
+	} else if(String.fromCharCode(event.which).toLowerCase() == 'x'){
+		brush($("#paint").children()[7]);
+	} else if(String.fromCharCode(event.which).toLowerCase() == 'c'){
+		brush($("#paint").children()[8]);
 	} else {
 		return true;
 	}
