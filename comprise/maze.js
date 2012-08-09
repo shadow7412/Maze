@@ -24,15 +24,39 @@ var blocks = {
 	"wall":"@",
 	"floor":"#",
 	"spawn":"S",
-	"exit":"E",
+	"exit":"X",
 	"break":"%",
 	//key/doors
 	"door open A":"a",
-	"door closed A":"A",
-	"key A":"à",
 	"door open B":"b",
+	"door open C":"c",
+	"door open D":"d",
+	"door open E":"e",
+	"door open F":"f",
+	"door open G":"g",
+	"door open H":"h",
+	"door open I":"i",
+	"door open J":"j",
+	"door closed A":"A",
 	"door closed B":"B",
-	"key B":"ß",
+	"door closed C":"C",
+	"door closed D":"D",
+	"door closed E":"E",
+	"door closed F":"F",
+	"door closed G":"G",
+	"door closed H":"H",
+	"door closed I":"I",
+	"door closed J":"J",
+	"key A":"1",
+	"key B":"2",
+	"key C":"3",
+	"key D":"4",
+	"key E":"5",
+	"key F":"6",
+	"key G":"7",
+	"key H":"8",
+	"key I":"9",
+	"key J":"0",
 	"deathzone":"*"
 }
 function invert(obj) {
@@ -171,10 +195,9 @@ function importLevel(){
 	return true;
 }
 function check(){
-	var w = $("#warnings").removeClass("error")[0];
-	w.innerHTML = "";
+	var w = $(".warnings").removeClass("error");
 	var p = [];
-	
+
 	//Floor
 	if($("#maze .floor").length==0) p.push("There is no floor");
 	
@@ -205,7 +228,7 @@ function check(){
 	if(p.length==0) p.push("No errors");
 	else $(w).addClass("error");
 	//p.push("<button onclick=\"check()\">Check</button>");
-	w.innerHTML = p.join('<br/>');
+	w.html(p.join('<br/>'));
 }
 function is2x2(e){
 	if(e.length%4!=0) return false;

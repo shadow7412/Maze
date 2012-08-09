@@ -45,8 +45,16 @@
 			Door/Key Type:
 			<div>
 				<select id="doortype">
-					<option value="A">A</option>
-					<option value="B">B</option>
+					<option value="A">1</option>
+					<option value="B">2</option>
+					<option value="C">3</option>
+					<option value="D">4</option>
+					<option value="E">5</option>
+					<option value="F">6</option>
+					<option value="G">7</option>
+					<option value="H">8</option>
+					<option value="I">9</option>
+					<option value="J">10</option>
 				</select>
 			</div>
 			Add row/column
@@ -63,12 +71,15 @@
 				<button onclick="error('Save cleared!');eraseCookie('mazelevel')">Delete</button>
 			</div>
 			Warnings:
-			<div id="warnings">
+			<div class="warnings">
 			</div>
 		</div>
 		<div id="maze">Generate a map in the Setup tab - or load one in the Export tab :)</div>
 	</div>
 	<div id="output">
+		Issues with current map:
+		<div class="warnings">
+		</div>
 		<button onclick="if(importLevel()) $('#tabs').tabs('select',1); else error('The columns don\'t line up!');return false;">Import to editor</button>
 		<textarea></textarea>
 	</div>
