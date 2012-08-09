@@ -30,13 +30,22 @@
 	background:#fff;
 }
 #maze div span.spawn, #pallet .spawn{
-	background:#aaa;
+	background:#00f;
 }
 #maze div span.exit, #pallet .exit{
 	background:#0f0;
 }
 #maze div span.deathzone, #pallet .deathzone{
 	background:#f00;
+}
+#maze div span.door1, #pallet .door1{
+	background:#990;
+}
+#maze div span.key1, #pallet .key1{
+	background:#ff0;
+}
+#maze div span.break, #pallet .break{
+	background:#aaa;
 }
 #pallet{
 	font-size:10px;

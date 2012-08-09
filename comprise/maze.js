@@ -25,6 +25,9 @@ var blocks = {
 	"floor":"#",
 	"spawn":"S",
 	"exit":"E",
+	"break":"%",
+	"key1":"A",
+	"door1":"a",
 	"deathzone":"*"
 }
 function invert(obj) {
@@ -36,6 +39,7 @@ function invert(obj) {
 }
 var unblocks = invert(blocks);
 function generate(r,c){
+	if(r>200 || c>200) if(!confirm("Generating a map this large may crash the page - especially in non chrome browsers.")) return false;
 	var grid = "";
 	for(var x=0;x<r;x++){
 		grid+="<div>";
@@ -45,6 +49,7 @@ function generate(r,c){
 	$("#maze").html(grid);
 	relabel();
 	check();
+	return true;
 }
 function relabel(){
 	$("#maze span").unbind();

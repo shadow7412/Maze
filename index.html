@@ -19,7 +19,7 @@
 	<div id="setup">
 		Generate Maze:</br>
 		This will delete any progress you have made (if any)!!<br/>
-		<form onsubmit="generate(this.col.value,this.row.value); $('#tabs').tabs('select', 1);return false;">
+		<form onsubmit="if(generate(this.col.value,this.row.value)) $('#tabs').tabs('select', 1);return false;">
 			<table>
 			<tr><td>Columns:</td><td><input name="col" value="20"></td></tr>
 			<tr><td>Rows:</td><td><input name="row" value="20"/></td></tr>
@@ -31,10 +31,13 @@
 		<div id="pallet">
 			Paint:
 			<div id="paint">
-				<span title="Empty" onmousedown="brush(this)"></span>
 				<span title="Wall" class="wall active" onmousedown="brush(this)"></span>
 				<span title="Floor" class="floor" onmousedown="brush(this)"></span>
+				<span title="Empty" onmousedown="brush(this)"></span>
 				<span title="Death Zone" class="deathzone" onmousedown="brush(this)"></span>
+				<span title="Key 1" class="key1" onmousedown="brush(this)"></span>
+				<span title="Door 1" class="door1" onmousedown="brush(this)"></span>
+				<span title="Breakable Wall" class="break" onmousedown="brush(this)"></span>
 				<span title="Spawn" class="spawn" onmousedown="brush(this)"></span>
 				<span title="Exit" class="exit" onmousedown="brush(this)"></span>
 			</div>
