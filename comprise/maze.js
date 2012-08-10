@@ -1,13 +1,19 @@
 //Start
-$(function() {
-	$("#tabs").tabs({
-		select:function(event,ui){
-			if(ui.index==2) 
-				$("#pallet").dialog({width:180,closeOnEscape:false, resizable:false ,title:"Tools"}); else $("#pallet").dialog("close");
-			}
-	});
-	if(loadFromCookie()) $("#tabs").tabs('select',2);
+
+$("#tabs").tabs({
+	select:function(event,ui){
+		if(ui.index==2) 
+			$("#pallet").dialog({width:180,closeOnEscape:false, resizable:false ,title:"Tools"}); else $("#pallet").dialog("close");
+		}
 });
+$("#github").GitHubBadge({
+	login:"shadow7412",
+	kind:"project",
+	repo_name:"Maze",
+	image_path:"comprise/images/"
+});
+if(loadFromCookie()) $("#tabs").tabs('select',2);
+
 function error(a){
 	if(a!=null) clearTimeout(error.handle);
 	$("#error").html(a);
@@ -26,7 +32,6 @@ var blocks = {
 	"spawn":"S",
 	"exit":"X",
 	"break":"%",
-	//key/doors
 	"door open A":"a",
 	"door open B":"b",
 	"door open C":"c",
