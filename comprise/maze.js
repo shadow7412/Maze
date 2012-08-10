@@ -214,11 +214,14 @@ function check(){
 	else if(!is2x2(e)) p.push("Exit must be 2X2");
 	
 	//each key has at least 1 door
-	var keytypes = ['A','B']
+	var keytypes = ['A','B','C','D','E','F','G','I']
 	for(a in keytypes){
-		if($("#maze .key."+keytypes[a]).length!=0 && $("#maze .door."+keytypes[a]).length==0)
-			p.push("Key "+keytypes[a]+" has no door");
-		else if($("#maze .door."+keytypes[a]).length!=0 && $("#maze .key."+keytypes[a]).length==0)
+		var keys = $("#maze .key."+keytypes[a]);
+		if(keys.length!=0){
+			if(!((keys.length==1) || (keys.length==2 && is2x1(keys)) || keys.length==4 && is2x2(keys)))
+				p.push("Key "+keytypes[a]+" is an invalid shape");
+			if($("#maze .door."+keytypes[a]).length==0) p.push("Key "+keytypes[a]+" has no door");
+		} else if($("#maze .door."+keytypes[a]).length!=0)
 			p.push("Door "+keytypes[a]+" has no key");
 	}
 	if(p.length==0) p.push("No errors");
