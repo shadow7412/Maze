@@ -224,16 +224,17 @@ function check(){
 	else if(!is2x2(e)) p.push("Exit must be 2X2");
 	
 	//each key has at least 1 door
-	var keytypes = ['A','B','C','D','E','F','G','I']
+	var keytypes = ['A','B','C','D','E','F','G','H','I','J'];
 	for(a in keytypes){
 		var keys = $("#maze .key."+keytypes[a]);
 		if(keys.length!=0){
 			if(!((keys.length==1) || (keys.length==2 && is2x1(keys)) || keys.length==4 && is2x2(keys)))
-				p.push("Key "+keytypes[a]+" is an invalid shape");
-			if($("#maze .door."+keytypes[a]).length==0) p.push("Key "+keytypes[a]+" has no door");
+				p.push("Key "+(parseInt(a)+1)+" is an invalid shape");
+			if($("#maze .door."+keytypes[a]).length==0) p.push("Key "+(parseInt(a)+1)+" has no door");
 		} else if($("#maze .door."+keytypes[a]).length!=0)
-			p.push("Door "+keytypes[a]+" has no key");
+			p.push("Door "+(parseInt(a)+1)+" has no key");
 	}
+	$(".warningCount").html(p.length);
 	if(p.length==0) p.push("No errors");
 	else $(w).addClass("error");
 	//p.push("<button onclick=\"check()\">Check Now</button>"); //Unneeded now that this happens every iteration
