@@ -6,6 +6,12 @@
 	-o-user-select: none;
 	user-select: none;
 }
+.github{
+	background:#fff;
+	margin:-1.8em;
+	margin-top:-1em;
+	margin-bottom:0px;
+}
 #maze div{
 	display:table-row;
 	text-align:center;
@@ -30,6 +36,10 @@
 #pallet span.active{
 	border:solid 2px #0f0;
 }
+.ui-dialog-titlebar-close {
+  visibility: hidden!important; /*Prevent closure of the Pallet box)*/
+}
+/*Block Types*/
 span.wall{
 	background:#666!important;
 }
@@ -58,7 +68,7 @@ span.A:before{
 	font-size:13px;
 	content:"1";
 }
-span.door.B:before{
+span.B:before{
 	font-size:13px;
 	content:"2";
 }
@@ -97,12 +107,7 @@ span.J:before{
 span.break{
 	background:#aaa!important;
 }
-.github{
-	background:#fff;
-	margin:-1.8em;
-	margin-top:-1em;
-	margin-bottom:0px;
-}
+/*End Block Types*/
 #pallet{
 	font-size:10px;
 }
@@ -136,7 +141,4 @@ textarea {
 	width:100%;
 	min-height:800px;
 	font-family: Courier, monospace!important;
-}
-.ui-dialog-titlebar-close {
-  visibility: hidden!important;
 }

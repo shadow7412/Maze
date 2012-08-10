@@ -1,19 +1,19 @@
 //Start
-
 $("#tabs").tabs({
 	select:function(event,ui){
 		if(ui.index==2) 
 			$("#pallet").dialog({width:180,closeOnEscape:false, resizable:false ,title:"Tools"}); else $("#pallet").dialog("close");
 		}
 });
-$("#github").GitHubBadge({
-	login:"shadow7412",
-	kind:"project",
-	repo_name:"Maze",
-	image_path:"comprise/images/"
+$(document).ready(function(){
+	if(loadFromCookie()) $("#tabs").tabs('select',2);
+	$("#github").GitHubBadge({
+		login:"shadow7412",
+		kind:"project",
+		repo_name:"Maze",
+		image_path:"comprise/images/"
+	});
 });
-if(loadFromCookie()) $("#tabs").tabs('select',2);
-
 function error(a){
 	if(a!=null) clearTimeout(error.handle);
 	$("#error").html(a);
@@ -101,10 +101,15 @@ function relabel(){
 }
 //Manipulation
 function brush(e){
-	$(e).siblings().removeClass("active");
+	$(e).removeClass("active").siblings().removeClass("active");
 	if(e.className.search("door")!=-1 || e.className.search("key")!=-1) mouse.type = e.className+" "+document.getElementById("doortype").value;
 	else mouse.type = e.className;
 	$(e).addClass("active");
+}
+function setType(t){
+	if($("#pallet .key.active").length!=0) mouse.type = "key "+t;
+	else if($("#pallet .door.open.active").length!=0) mouse.type = "door open "+t;
+	else if($("#pallet .door.closed.active").length!=0) mouse.type = "door closed "+t;
 }
 function mouseDown(e){
 	mouse.dragging = true;
@@ -231,7 +236,7 @@ function check(){
 	}
 	if(p.length==0) p.push("No errors");
 	else $(w).addClass("error");
-	//p.push("<button onclick=\"check()\">Check</button>");
+	//p.push("<button onclick=\"check()\">Check Now</button>"); //Unneeded now that this happens every iteration
 	w.html(p.join('<br/>'));
 }
 function is2x2(e){

@@ -31,7 +31,7 @@
 		<tr>
 			<th><span class="floor"></span></th>
 			<th>Floor</th>
-			<td>Player can roll on this. Player should be allowed 2 spaces wide to move wherever possible</td>
+			<td>Player can roll on this. Player should be allowed 2 spaces wide to move wherever possible. (Maps may be rejected if they don't adhere to this rule!)</td>
 		</tr>
 		<tr>
 			<th><span class="wall"></span></th>
@@ -41,12 +41,12 @@
 		<tr>
 			<th><span class="break"></span></th>
 			<th>Breakable Wall</th>
-			<td>Used to hinder the player. Leave a good runup!</td>
+			<td>Used to hinder the player. Leave a good run-up!</td>
 		</tr>
 		<tr>
 			<th><span class="void"></span></th>
 			<th>Void</th>
-			<td>Nothingness. Player can fall through this to their death. Handy for making obscurely shaped mazes, or deathholes.</td>
+			<td>Nothingness. Player can fall through this to it's death. Handy for making obscurely shaped mazes, or deathholes.</td>
 		</tr>
 		<tr>
 			<th><span class="door closed A"></span></th>
@@ -110,7 +110,7 @@
 			</div>
 			Door/Key Type:
 			<div>
-				<select id="doortype">
+				<select id="doortype" onchange="setType(this.value);">
 					<option value="A">1</option>
 					<option value="B">2</option>
 					<option value="C">3</option>
