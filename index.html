@@ -11,21 +11,85 @@
 <body onmouseup="mouseUp()">
 <div id="tabs">
 	<ul>
+		<li><a href="#intro">Introduction / Help</a></li>
 		<li><a href="#setup">Setup</a></li>
 		<li><a href="#craft">Craft</a></li>
 		<li><a href="#output" onclick="exportLevel()">Export</a></li>
 		<li id="error"></li>
 	</ul>
+	<div id="intro">
+		aMAZEing Level editor!
+		<div style="font-size:12px;">
+			This is the level editor that comes with the game aMAZEing! With it, you can create and share your own levels!<br/>
+			The only requirement is you have a spawn point, and an exit point - and a way to get there!<br/><br/>
+			You should read the below - but when you are ready: <a href="javascript:$('#tabs').tabs('select',1)">generate a grid to get you started!</a>
+		</div>
+		Block Types:
+		<table>
+		<tr>
+			<th><span class="floor"></span></th>
+			<th>Floor</th>
+			<td>Player can roll on this. Player should be allowed 2 spaces wide to move wherever possible</td>
+		</tr>
+		<tr>
+			<th><span class="wall"></span></th>
+			<th>Wall</th>
+			<td>Used to block the player</td>
+		</tr>
+		<tr>
+			<th><span class="break"></span></th>
+			<th>Breakable Wall</th>
+			<td>Used to hinder the player. Leave a good runup!</td>
+		</tr>
+		<tr>
+			<th><span class="void"></span></th>
+			<th>Void</th>
+			<td>Nothingness. Player can fall through this to it's death. Handy for making obscurely shaped mazes, or deathholes.</td>
+		</tr>
+		<tr>
+			<th><span class="door closed A"></span></th>
+			<th>Door (closed)</th>
+			<td>Used to block the player until it finds the key (numbers must match on the key and door)</td>
+		</tr>
+		<tr>
+			<th><span class="door open A"></span></th>
+			<th>Door (open)</th>
+			<td>As above - but starts opened. Used to block a path after the player finds the key</td>
+		</tr>
+		<tr>
+			<th><span class="key A"></span></th>
+			<th>Key</th>
+			<td>Used to open/close doors. Limit of one per type - but can be placed 1x1, 1x2, 2x1 or 2x2. (Key will appear in center)</td>
+		</tr>
+		<tr>
+			<th><span class="deathzone"></span></th>
+			<th>Death Zone</th>
+			<td>Used to kill the player. Be crafty in how you place these ;)</td>
+		</tr>
+		<tr>
+			<th><span class="spawn"></span></th>
+			<th>Spawn</th>
+			<td>Player starts here. Requirement of 1 per map, and must be 2x2.</td>
+		</tr>
+		<tr>
+			<th><span class="exit"></span></th>
+			<th>Exit</th>
+			<td>Player finishes here. Requirement of 1 per map, and must be 2x2.</td>
+		</tr>
+			
+		</table>
+	</div>
 	<div id="setup">
 		Generate Maze:</br>
 		This will delete any progress you have made (if any)!!<br/>
-		<form onsubmit="if(generate(this.col.value,this.row.value)) $('#tabs').tabs('select', 1);return false;">
+		<form target="" action="javascript:$('#maze').html('');alert('The browser could not generate a map this large. Try a smaller map!');" onsubmit="if(generate(this.col.value,this.row.value)) $('#tabs').tabs('select', 2);return false;">
 			<table>
 			<tr><td>Columns:</td><td><input name="col" value="20"></td></tr>
 			<tr><td>Rows:</td><td><input name="row" value="20"/></td></tr>
 			<tr><td></td><td><input type="submit" value="Generate"/></td></tr>
 			</table>
 		</form>
+		<iframe style="display:none"></iframe>
 	</div>
 	<div id="craft">
 		<div id="pallet">
@@ -80,7 +144,7 @@
 		Issues with current map:
 		<div class="warnings">
 		</div>
-		<button onclick="if(importLevel()) $('#tabs').tabs('select',1); else error('The columns don\'t line up!');return false;">Import to editor</button>
+		<button onclick="if(importLevel()) $('#tabs').tabs('select',2); else error('The columns don\'t line up!');return false;">Import to editor</button>
 		<textarea></textarea>
 	</div>
 </div>

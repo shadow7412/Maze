@@ -10,7 +10,7 @@
 	display:table-row;
 	text-align:center;
 }
-#maze div span, #pallet span{
+#maze div span, #pallet span,#intro table th span{
 	border: solid 1px;
 	width:20px;
 	min-width:20px;
@@ -18,78 +18,84 @@
 	display:table-cell;
 	background: #FDC;
 }
+#intro table tr td{
+	font-size:12px;
+}
+#intro table tr td:before{
+	content:" - ";
+}
 #maze div span:hover, #pallet span:hover{
 	border:solid 1px #f00;
 }
 #pallet span.active{
 	border:solid 2px #0f0;
 }
-#maze div span.wall, #pallet .wall{
-	background:#666;
+span.wall{
+	background:#666!important;
 }
-#maze div span.floor, #pallet .floor{
-	background:#fff;
+span.floor{
+	background:#fff!important;
 }
-#maze div span.spawn, #pallet .spawn{
-	background:#00f;
+span.spawn{
+	background:#00f!important;
 }
-#maze div span.exit, #pallet .exit{
-	background:#0f0;
+span.exit{
+	background:#0f0!important;
 }
-#maze div span.deathzone, #pallet .deathzone{
-	background:#f00;
+span.deathzone{
+	background:#f00!important;
 }
-#maze div span.door.open, #pallet .door.open{
-	background:#cd853f;
+span.door.open{
+	background:#cd853f!important;
 }
-#maze div span.door.closed, #pallet .door.closed{
-	background:#8b4513;
+span.door.closed{
+	background:#8b4513!important;
 }
-#maze div span.key, #pallet .key{
-	background:#ff0;
+span.key{
+	background:#ff0!important;
 }
-#maze div span.A:before{
+span.A:before{
 	font-size:13px;
 	content:"1";
 }
-#maze div span.B:before{
+span.door.B:before{
 	font-size:13px;
 	content:"2";
 }
-#maze div span.C:before{
+span.C:before{
 	font-size:13px;
 	content:"3";
 }
-#maze div span.D:before{
+span.D:before{
 	font-size:13px;
 	content:"4";
 }
-#maze div span.E:before{
+span.E:before{
 	font-size:13px;
 	content:"5";
 }
-#maze div span.F:before{
+span.F:before{
 	font-size:13px;
 	content:"6";
 }
-#maze div span.G:before{
+span.G:before{
 	font-size:13px;
 	content:"7";
 }
-#maze div span.H:before{
+span.H:before{
 	font-size:13px;
 	content:"8";
 }
-#maze div span.I:before{
+span.I:before{
 	font-size:13px;
 	content:"9";
 }
-#maze div span.J:before{
+span.J:before{
 	font-size:13px;
 	content:"10";
 }
-#maze div span.break, #pallet .break{
-	background:#aaa;
+span.break{
+	background:#aaa!important;
 }
 #pallet{
 	font-size:10px;

@@ -2,11 +2,11 @@
 $(function() {
 	$("#tabs").tabs({
 		select:function(event,ui){
-			if(ui.index==1) 
+			if(ui.index==2) 
 				$("#pallet").dialog({width:180,closeOnEscape:false, resizable:false ,title:"Tools"}); else $("#pallet").dialog("close");
 			}
 	});
-	if(loadFromCookie()) $("#tabs").tabs('select',1);
+	if(loadFromCookie()) $("#tabs").tabs('select',2);
 });
 function error(a){
 	if(a!=null) clearTimeout(error.handle);
@@ -81,21 +81,17 @@ function generate(r,c){
 	return true;
 }
 function relabel(){
-	$("#maze span").unbind();
+	$("#maze div").each(function(i,e){
+		$(e).unbind();//break up unbind into columns - to use larger maps
+	});
 	$("#maze").children()
 	.each(function(i,e){
 		e.className = i;
 		$(e).children().each(function(i,e){
 			e.id = $(e).parent()[0].className+"r"+i;
-			e.onmouseover="mouseOver(this)";
-			e.onmousedown="mouseDown(this)";
+			$(e).mouseover(function(){mouseOver(this);});
+			$(e).mousedown(function(){mouseDown(this);});
 		});
-	});
-	$("#maze span").mouseover(function(){
-		mouseOver(this);
-	});
-	$("#maze span").mousedown(function(){
-		mouseDown(this);
 	});
 }
 //Manipulation
