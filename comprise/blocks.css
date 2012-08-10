@@ -110,6 +110,15 @@ span.break{
 	margin-left:5px;
 	display:inline-block;
 }
+#output div.warnings.error:before{
+	display:block;
+	content:"Issues:";
+}
+#output div.warnings.error:after{
+	display:block;
+	margin-top:20px;
+	content:"Do not attempt to submit the map until these basic problems are fixed!";
+}
 .warnings.error{
 	color:red;
 }
