@@ -35,9 +35,7 @@
 }
 #pallet span.active{
 	border:solid 2px #0f0;
-}
-.ui-dialog-titlebar-close {
-  visibility: hidden!important; /*Prevent closure of the Pallet box)*/
+	padding:4px;
 }
 /*Block Types*/
 span.wall{

@@ -95,18 +95,59 @@
 	</div>
 	<div id="craft">
 		<div id="pallet">
+			<div id="help" style="display:none" title="Tools Help">
+				Use the Tools bar to manipulate the level.<br/>
+				<div id="helpaccordion">
+					<h3><a>Paint</a></h3>
+					<div>
+						Descriptions of each paint type can be found on the Intro page.</br>
+						You can select them quickly by using the keyboard:<br/>
+						<table>
+						<tr><td>Q</td><td>W</td><td>E</td></tr>
+						<tr><td>A</td><td>S</td><td>D</td></tr>
+						<tr><td>Z</td><td>X</td><td>C</td></tr>
+						</table>
+						and space to select void.
+					</div>
+					<h3><a>Door/Key Type</a></h3>
+					<div>
+						The number selected here will be the number that comes up on any painted doors or keys.<br/>
+						You can quickly select them with the keyboard by using the 1-0 keys. (Not the numpad)
+					</div>
+					<h3><a>Add row/column</a></h3>
+					<div>
+							If you run out of room drawing your maze, you can use these buttons to extend it in any given direction.<br/>
+							There is no way to remove rows at this point - so export your level and remove the rows in the text box then reimport for now.
+					</div>
+					<h3><a>Quicksave</a></h3>
+					<div>
+						Use this to load/save your level.</br>
+						The save will be stored to the cookies in your browser - so if they are disabled saving will not work.<br/>
+						If you have a save it will be loaded as soon as you open this page in the future.</br>
+						Use 'Delete' to clear this data. It will not change what you have on the screen.<br/>
+						Ctrl S will save, Ctrl L will load.
+					</div>
+					<h3><a>Warnings</a></h3>
+					<div>
+						This area is devoted to telling you in realtime what is wrong with your map.<br/>
+						While you are creating it, you will get errors - and this is by no means a bad thing.</br>
+						But make sure that it says 'No errors' before attempting to submit.</br>
+						Attempting to play a map with errors will work - but may cause... sideeffects...
+					</div>
+				</div>
+			</div>
 			Paint:
 			<div id="paint">
 				<span title="Wall" class="wall active" onmousedown="brush(this)"></span>
 				<span title="Floor" class="floor" onmousedown="brush(this)"></span>
-				<span title="Empty" onmousedown="brush(this)"></span>
+				<span title="Breakable Wall" class="break" onmousedown="brush(this)"></span>
 				<span title="Key" class="key" onmousedown="brush(this)"></span>
 				<span title="Door - Open" class="door open" onmousedown="brush(this)"></span>
 				<span title="Door - Closed" class="door closed" onmousedown="brush(this)"></span>
-				<span title="Breakable Wall" class="break" onmousedown="brush(this)"></span>
 				<span title="Death Zone" class="deathzone" onmousedown="brush(this)"></span>
 				<span title="Spawn" class="spawn" onmousedown="brush(this)"></span>
 				<span title="Exit" class="exit" onmousedown="brush(this)"></span>
+				<span title="Void" onmousedown="brush(this)"></span>
 			</div>
 			Door/Key Type:
 			<div>

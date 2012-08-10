@@ -1,8 +1,24 @@
 //Start
 $("#tabs").tabs({
 	select:function(event,ui){
-		if(ui.index==2) 
-			$("#pallet").dialog({width:180,closeOnEscape:false, resizable:false ,title:"Tools"}); else $("#pallet").dialog("close");
+		if(ui.index==2){
+			$("#pallet").dialog({
+				width:180,
+				closeOnEscape:false,
+				resizable:false,
+				title:"Tools",
+				beforeClose:function(){
+					$("#help").dialog({
+						height:700,
+						width:1024,
+						buttons:[{text:"Close",click:function(){$(this).dialog('close');}}]
+					});
+					$("#helpaccordion").accordion('resize');
+					return false;
+				}
+			});
+			$(".ui-icon",$("#pallet").parent()).removeClass("ui-icon-closethick").addClass("ui-icon-help");
+			}else $("#pallet").dialog("close");
 		}
 });
 $(document).ready(function(){
@@ -13,6 +29,7 @@ $(document).ready(function(){
 		repo_name:"Maze",
 		image_path:"comprise/images/"
 	});
+	$("#helpaccordion").accordion();
 });
 function error(a){
 	if(a!=null) clearTimeout(error.handle);
@@ -312,6 +329,11 @@ $(document).keydown(function(event) {
 		brush($("#paint").children()[7]);
 	} else if(String.fromCharCode(event.which).toLowerCase() == 'c'){
 		brush($("#paint").children()[8]);
+	} else if(String.fromCharCode(event.which).toLowerCase() == ' '){
+		brush($("#paint").children()[9]);
+	} else if(event.which>=48 && event.which<=57){
+		document.getElementById("doortype").value = ['J','A','B','C','D','E','F','G','H','I'][event.which-48];
+		setType(event.which-48);
 	} else {
 		return true;
 	}
