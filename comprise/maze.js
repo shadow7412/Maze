@@ -7,7 +7,7 @@ $("#tabs").tabs({
 				closeOnEscape:false,
 				resizable:false,
 				title:"Tools",
-				/*beforeClose:function(){
+				beforeClose:function(){
 					$("#help").dialog({
 						height:700,
 						width:1024,
@@ -15,10 +15,10 @@ $("#tabs").tabs({
 					});
 					$("#helpaccordion").accordion('resize');
 					return false;
-				}*/
+				}
 			});
 			$(".ui-icon",$("#pallet").parent()).removeClass("ui-icon-closethick").addClass("ui-icon-help");
-			}else $("#pallet").dialog("close");
+			}else $("#pallet").dialog("destroy");
 		}
 });
 $(document).ready(function(){
