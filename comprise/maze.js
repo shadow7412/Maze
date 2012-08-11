@@ -116,7 +116,7 @@ function relabel(){
 		});
 	});
 }
-//Manipulation
+//Mouse Manipulation
 function brush(e){
 	$(e).removeClass("active").siblings().removeClass("active");
 	if(e.className.search("door")!=-1 || e.className.search("key")!=-1) mouse.type = e.className+" "+document.getElementById("doortype").value;
@@ -140,9 +140,11 @@ function mouseUp(){
 	mouse.dragging = false;
 	check();
 }
+// Maze Size
 function addUp(){
 	var m = $("#maze")
 	var l = m.children().first().children().length;
+	if(l==0) l=1;
 	var d = "";
 	for(var i=0;i<l;i++) d+="<span></span>";
 	m.prepend("<div>"+d+"</div>");
@@ -151,6 +153,7 @@ function addUp(){
 function addDown(){
 	var m = $("#maze")
 	var l = m.children().first().children().length;
+	if(l==0) l=1;
 	var d = "";
 	for(var i=0;i<l;i++) d+="<span></span>";
 	m.append("<div>"+d+"</div>");
@@ -166,6 +169,26 @@ function addRight(){
 	$("#maze").children().each(function(i,e){
 		$(e).append("<span></span>");
 	});
+	relabel();
+}
+function removeUp(){
+	$("#maze").children().first().remove();
+	relabel();
+}
+function removeDown(){
+	$("#maze").children().last().remove();
+	relabel();
+}
+function removeLeft(){
+	$("#maze").children().each(function(i,e){
+			$(e).children().first().remove();
+		});
+	relabel();
+}
+function removeRight(){
+	$("#maze").children().each(function(i,e){
+			$(e).children().last().remove();
+		});
 	relabel();
 }
 //Saving/Loading

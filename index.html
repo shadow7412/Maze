@@ -114,10 +114,11 @@
 						The number selected here will be the number that comes up on any painted doors or keys.<br/>
 						You can quickly select them with the keyboard by using the 1-0 keys. (Not the numpad)
 					</div>
-					<h3><a>Add row/column</a></h3>
+					<h3><a>Add/Remove row/column</a></h3>
 					<div>
 							If you run out of room drawing your maze, you can use these buttons to extend it in any given direction.<br/>
-							There is no way to remove rows at this point - so export your level and remove the rows in the text box then reimport for now.
+							Or if you have a lot of void space on any side of the maze - you may want to delete it using the buttons below.<br/>
+							You should trim your maps before submitting.
 					</div>
 					<h3><a>Quicksave</a></h3>
 					<div>
@@ -170,6 +171,13 @@
 				<button onclick="addDown()">Down</button>
 				<button onclick="addLeft()">Left</button>
 				<button onclick="addRight()">Right</button>
+			</div>
+			Remove row/column
+			<div>
+				<button onclick="removeUp()">Up</button>
+				<button onclick="removeDown()">Down</button>
+				<button onclick="removeLeft()">Left</button>
+				<button onclick="removeRight()">Right</button>
 			</div>
 			Quicksave:
 			<div>
