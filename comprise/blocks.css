@@ -22,7 +22,7 @@
 	min-width:20px;
 	height:20px;
 	display:table-cell;
-	background: #FDC;
+	background: #FDC url('images/blocks/void.jpg');
 }
 #intro table tr td{
 	font-size:12px;
@@ -39,10 +39,10 @@
 }
 /*Block Types*/
 span.wall{
-	background:#666!important;
+	background:#333 url('images/blocks/wall.jpg')!important;
 }
 span.floor{
-	background:#fff!important;
+	background:#777 url('images/blocks/floor.jpg')!important;
 }
 span.spawn{
 	background:#00f!important;
