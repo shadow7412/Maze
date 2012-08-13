@@ -3,7 +3,7 @@ $("#tabs").tabs({
 	select:function(event,ui){
 		if(ui.index==2){
 			$("#pallet").dialog({
-				width:180,
+				width:190,
 				closeOnEscape:false,
 				resizable:false,
 				title:"Tools",
@@ -49,6 +49,8 @@ var blocks = {
 	"spawn":"S",
 	"exit":"X",
 	"break":"%",
+	"weakbreak":"=",
+	"coin":"$",
 	"door open A":"a",
 	"door open B":"b",
 	"door open C":"c",
@@ -79,7 +81,26 @@ var blocks = {
 	"key H":"8",
 	"key I":"9",
 	"key J":"0",
+	"pad A":"k",
+	"pad B":"l",
+	"pad C":"m",
+	"pad D":"n",
+	"pad E":"o",
+	"pad F":"p",
+	"pad G":"q",
+	"pad H":"r",
+	"pad I":"s",
+	"pad J":"t",
+	"boulder":"O",
+	"lrboulder":">",
+	"udboulder":"^",
 	"deathzone":"*"
+}
+function unused(){
+	var charcodes = ""
+	for(i=0;i<128;i++) charcodes+=String.fromCharCode(i);
+	for(var c in unblocks) charcodes = charcodes.replace(c,'');//charcodes.replace(c);
+	return charcodes;
 }
 function invert(obj) {
 	var new_obj = {};
@@ -118,13 +139,18 @@ function relabel(){
 }
 //Mouse Manipulation
 function brush(e){
+	if(e.className.search("notavail") != -1){
+		error("Not available. Yet.");
+		return;
+	}
 	$(e).removeClass("active").siblings().removeClass("active");
-	if(e.className.search("door")!=-1 || e.className.search("key")!=-1) mouse.type = e.className+" "+document.getElementById("doortype").value;
+	if(e.className.search("door")!=-1 || e.className.search("key")!=-1 || e.className.search("pad")!=-1) mouse.type = e.className+" "+document.getElementById("doortype").value;
 	else mouse.type = e.className;
 	$(e).addClass("active");
 }
 function setType(t){
 	if($("#pallet .key.active").length!=0) mouse.type = "key "+t;
+	else if($("#pallet .pad.active").length!=0) mouse.type = "pad "+t;
 	else if($("#pallet .door.open.active").length!=0) mouse.type = "door open "+t;
 	else if($("#pallet .door.closed.active").length!=0) mouse.type = "door closed "+t;
 }
@@ -340,20 +366,26 @@ $(document).keydown(function(event) {
 		brush($("#paint").children()[1]);
 	} else if(String.fromCharCode(event.which).toLowerCase() == 'e'){
 		brush($("#paint").children()[2]);
-	} else if(String.fromCharCode(event.which).toLowerCase() == 'a'){
+	} else if(String.fromCharCode(event.which).toLowerCase() == 'r'){
 		brush($("#paint").children()[3]);
-	} else if(String.fromCharCode(event.which).toLowerCase() == 's'){
+	} else if(String.fromCharCode(event.which).toLowerCase() == 'a'){
 		brush($("#paint").children()[4]);
-	} else if(String.fromCharCode(event.which).toLowerCase() == 'd'){
+	} else if(String.fromCharCode(event.which).toLowerCase() == 's'){
 		brush($("#paint").children()[5]);
-	} else if(String.fromCharCode(event.which).toLowerCase() == 'z'){
+	} else if(String.fromCharCode(event.which).toLowerCase() == 'd'){
 		brush($("#paint").children()[6]);
-	} else if(String.fromCharCode(event.which).toLowerCase() == 'x'){
+	} else if(String.fromCharCode(event.which).toLowerCase() == 'f'){
 		brush($("#paint").children()[7]);
-	} else if(String.fromCharCode(event.which).toLowerCase() == 'c'){
+	} else if(String.fromCharCode(event.which).toLowerCase() == 'z'){
 		brush($("#paint").children()[8]);
-	} else if(String.fromCharCode(event.which).toLowerCase() == ' '){
+	} else if(String.fromCharCode(event.which).toLowerCase() == 'x'){
 		brush($("#paint").children()[9]);
+	} else if(String.fromCharCode(event.which).toLowerCase() == 'c'){
+		brush($("#paint").children()[10]);
+	} else if(String.fromCharCode(event.which).toLowerCase() == 'v'){
+		brush($("#paint").children()[11]);
+	} else if(String.fromCharCode(event.which).toLowerCase() == ' '){
+		brush($("#paint").children()[12]);
 	} else if(event.which>=48 && event.which<=57){
 		document.getElementById("doortype").value = ['J','A','B','C','D','E','F','G','H','I'][event.which-48];
 		setType(event.which-48);

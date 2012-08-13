@@ -37,6 +37,10 @@
 	border:solid 2px #0f0;
 	padding:4px;
 }
+#pallet span.notavail{
+	border:solid 2px #f00;
+	padding:4px;
+}
 /*Block Types*/
 span.wall{
 	background:#333 url('images/blocks/wall.jpg')!important;
@@ -53,6 +57,9 @@ span.exit{
 span.deathzone{
 	background:#f00!important;
 }
+span.coin{
+	background:#990!important;
+}
 span.door.open{
 	background:#cd853f!important;
 }
@@ -61,6 +68,9 @@ span.door.closed{
 }
 span.key{
 	background:#ff0!important;
+}
+span.pad{
+	background:#f99!important;
 }
 span.A:before{
 	font-size:13px;
@@ -104,6 +114,18 @@ span.J:before{
 }
 span.break{
 	background:#aaa!important;
+}
+span.weakbreak{
+	background:#eee!important;
+}
+span.boulder{
+	background:#888 url('images/boulder.png')!important;
+}
+span.udboulder{
+	background:#888 url('images/boulderud.png')!important;
+}
+span.lrboulder{
+	background:#888 url('images/boulderlr.png')!important;
 }
 /*End Block Types*/
 #pallet{

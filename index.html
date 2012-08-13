@@ -103,9 +103,9 @@
 						Descriptions of each paint type can be found on the Intro page.</br>
 						You can select them quickly by using the keyboard:<br/>
 						<table>
-						<tr><td>Q</td><td>W</td><td>E</td></tr>
-						<tr><td>A</td><td>S</td><td>D</td></tr>
-						<tr><td>Z</td><td>X</td><td>C</td></tr>
+						<tr><td>Q</td><td>W</td><td>E</td><td>R</td></tr>
+						<tr><td>A</td><td>S</td><td>D</td><td>F</td></tr>
+						<tr><td>Z</td><td>X</td><td>C</td><td>V</td></tr>
 						</table>
 						and space to select void.
 					</div>
@@ -141,14 +141,20 @@
 			<div id="paint">
 				<span title="Wall" class="wall active" onmousedown="brush(this)"></span>
 				<span title="Floor" class="floor" onmousedown="brush(this)"></span>
+				<span title="Weak Breakable Wall" class="weakbreak notavail" onmousedown="brush(this)"></span>
 				<span title="Breakable Wall" class="break" onmousedown="brush(this)"></span>
-				<span title="Key" class="key" onmousedown="brush(this)"></span>
 				<span title="Door - Open" class="door open" onmousedown="brush(this)"></span>
 				<span title="Door - Closed" class="door closed" onmousedown="brush(this)"></span>
-				<span title="Death Zone" class="deathzone" onmousedown="brush(this)"></span>
+				<span title="Key" class="key" onmousedown="brush(this)"></span>
+				<span title="Pad" class="pad notavail" onmousedown="brush(this)"></span>
+				<span title="Void" onmousedown="brush(this)"></span>
+				<span title="Coin" class="coin notavail" onmousedown="brush(this)"></span>
 				<span title="Spawn" class="spawn" onmousedown="brush(this)"></span>
 				<span title="Exit" class="exit" onmousedown="brush(this)"></span>
-				<span title="Void" onmousedown="brush(this)"></span>
+				<span title="Death Zone" class="deathzone" onmousedown="brush(this)"></span>
+				<span title="Boulder" class="boulder notavail" onmousedown="brush(this)"></span>
+				<span title="Up/Down Boulder" class="udboulder notavail" onmousedown="brush(this)"></span>
+				<span title="Left/Right Boulder" class="lrboulder notavail" onmousedown="brush(this)"></span>
 			</div>
 			Door/Key Type:
 			<div>
