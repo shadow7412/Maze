@@ -232,12 +232,16 @@ function exportLevel(){
 		});
 		data+="\n";
 	});
-	$("textarea")[0].value = data;
+	$("textarea")[0].value = document.getElementById('mapname').value+"\n"+document.getElementById('creator').value+"\n"+data;
 }
 function importLevel(){
 	var backup = $("#maze")[0].innerHTML;
+	var importData = $("textarea")[0].value.split('\n');
+	document.getElementById("mapname").value = importData.shift();
+	document.getElementById("creator").value = importData.shift();
+	importData = importData.join('\n').split('');
 	$("#maze").html("<div>"+
-		$.map($("textarea")[0].value.split(''),function(n){
+		$.map(importData,function(n){
 			if(n=="\n") return "</div><div>";
 			var data;
 			if(unblocks[n] != null){
@@ -348,7 +352,9 @@ function is2x1(e){
 }
 //Keys
 $(document).keydown(function(event) {
-    if (String.fromCharCode(event.which).toLowerCase() == 's' && event.ctrlKey){
+    if($("#tabs").tabs('option','selected')!=2){
+		//ignore!
+	} else if (String.fromCharCode(event.which).toLowerCase() == 's' && event.ctrlKey){
 		saveToCookie();
 		event.preventDefault();
 		return false;

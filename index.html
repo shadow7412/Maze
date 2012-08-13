@@ -82,16 +82,22 @@
 		</table>
 	</div>
 	<div id="setup">
-		Generate Maze:</br>
-		This will delete any progress you have made (if any)!!<br/>
-		<form target="" action="javascript:$('#maze').html('');alert('The browser could not generate a map this large. Try a smaller map!');" onsubmit="if(generate(this.col.value,this.row.value)) $('#tabs').tabs('select', 2);return false;">
+		Map Details<br/>
+		(these can be edited without harming your map)
+		<table>
+		<tr><td>Map Name:</td><td><input id="mapname" name="mapname" value="New Map"/></td></tr>
+		<tr><td>Artist</td><td><input id="creator" name="creator" value="Anonymous"/></td></tr>
+		</table>
+		<br/>
+		Generate Maze:<br/>
+		(This will delete any progress you have made)<br/>
+		<form action="javascript:$('#maze').html('');alert('The browser could not generate a map this large. Try a smaller map!');" onsubmit="if(generate(this.col.value,this.row.value)) $('#tabs').tabs('select', 2);return false;">
 			<table>
 			<tr><td>Columns:</td><td><input name="col" value="20"></td></tr>
 			<tr><td>Rows:</td><td><input name="row" value="20"/></td></tr>
 			<tr><td></td><td><input type="submit" value="Generate"/></td></tr>
 			</table>
 		</form>
-		<iframe style="display:none"></iframe>
 	</div>
 	<div id="craft">
 		<div id="pallet">
@@ -201,6 +207,8 @@
 		<div class="warnings">
 		</div>
 		<button onclick="if(importLevel()) $('#tabs').tabs('select',2); else error('The columns don\'t line up!');return false;">Import to editor</button>
+		<button onclick="saveToCookie();$('iframe')[0].src='export.php'">Export to File (Overwrites quicksave!)</button>
+		<iframe style="display:none"></iframe>
 		<textarea></textarea>
 	</div>
 </div>
