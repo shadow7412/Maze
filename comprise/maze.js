@@ -237,8 +237,8 @@ function exportLevel(){
 function importLevel(){
 	var backup = $("#maze")[0].innerHTML;
 	var importData = $("textarea")[0].value.split('\n');
-	document.getElementById("mapname").value = importData.shift();
-	document.getElementById("creator").value = importData.shift();
+	var mapname = importData.shift();
+	var creator = importData.shift();
 	importData = importData.join('\n').split('');
 	$("#maze").html("<div>"+
 		$.map(importData,function(n){
@@ -264,8 +264,10 @@ function importLevel(){
 	});
 	if(importLevel.count==0){ //if 0 - no data or failed, then throw error.
 		$("#maze").html(backup);
-		return false; //
+		return false;
 	}
+	document.getElementById("mapname").value = mapname;
+	document.getElementById("creator").value = creator;
 	relabel();
 	check();
 	return true;
