@@ -1,0 +1,44 @@
+span.wall{
+	background:#333 url('images/blocks/wall.jpg')!important;
+}
+span.floor{
+	background:#777 url('images/blocks/floor.jpg')!important;
+}
+span.spawn{
+	background:#00f!important;
+}
+span.exit{
+	background:#0f0!important;
+}
+span.deathzone{
+	background:#f00!important;
+}
+span.coin{
+	background:#990!important;
+}
+span.door.open{
+	background:#cd853f!important;
+}
+span.door.closed{
+	background:#8b4513!important;
+}
+span.key{
+	background:#ff0!important;
+}
+span.pad{
+	background:#f99!important;
+}span.break{
+	background:#aaa!important;
+}
+span.weakbreak{
+	background:#eee!important;
+}
+span.boulder{
+	background:#888 url('images/boulder.png')!important;
+}
+span.udboulder{
+	background:#888 url('images/boulderud.png')!important;
+}
+span.lrboulder{
+	background:#888 url('images/boulderlr.png')!important;
+}
