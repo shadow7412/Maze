@@ -26,8 +26,18 @@
 			The only requirement is you have a spawn point, and an exit point - and a way to get there!<br/><br/>
 			You should read the below - but when you are ready: <a href="javascript:$('#tabs').tabs('select',1)">generate a grid to get you started!</a>
 		</div>
-		Block Types:
 		<table>
+		<tr><th colspan=3>Main Blocks</th></tr>
+		<tr>
+			<th><span class="spawn"></span></th>
+			<th>Spawn</th>
+			<td>Player starts here. Requirement of 1 per map, and must be 2x2.</td>
+		</tr>
+		<tr>
+			<th><span class="exit"></span></th>
+			<th>Exit</th>
+			<td>Player finishes here. Requirement of 1 per map, and must be 2x2.</td>
+		</tr>
 		<tr>
 			<th><span class="floor"></span></th>
 			<th>Floor</th>
@@ -39,14 +49,31 @@
 			<td>Used to block the player</td>
 		</tr>
 		<tr>
-			<th><span class="break"></span></th>
-			<th>Breakable Wall</th>
-			<td>Used to hinder the player. Leave a good run-up!</td>
-		</tr>
+			<th><span class="deathzone"></span></th>
+			<th>Death Zone</th>
+			<td>Used to kill the player. Be crafty in how you place these ;)</td>
+		</tr>	
 		<tr>
 			<th><span class="void"></span></th>
 			<th>Void</th>
 			<td>Nothingness. Player can fall through this to it's death. Handy for making obscurely shaped mazes, or deathholes.</td>
+		</tr>
+		<tr><th colspan=3>Extra Blocks</th></tr>
+		<tr>
+			<th><span class="break"></span></th>
+			<th>Weak Breakable Wall</th>
+			<td>Used to hinder the player. Leave a run-up! (~4 spaces)</td>
+		</tr>
+		<tr>
+			<th><span class="break"></span></th>
+			<th>Breakable Wall</th>
+			<td>Used to hinder the player. Leave a decent run-up! ~(10 spaces)</td>
+		</tr>
+		<tr><th colspan=3>Doors and Keys</th></tr>
+		<tr>
+			<th><span class="key A"></span></th>
+			<th>Key</th>
+			<td>Used to open/close doors. Limit of one per type - but can be placed 1x1, 1x2, 2x1 or 2x2 (Floor will be placed and the key put in the middle). You may only have 1 type of each key! keys will disappear after being used</td>
 		</tr>
 		<tr>
 			<th><span class="door closed A"></span></th>
@@ -58,27 +85,27 @@
 			<th>Door (open)</th>
 			<td>As above - but starts opened. Used to block a path after the player finds the key. You may place as many doors as you like.</td>
 		</tr>
+		<tr><th colspan=3>Boulders</th></tr>
 		<tr>
-			<th><span class="key A"></span></th>
-			<th>Key</th>
-			<td>Used to open/close doors. Limit of one per type - but can be placed 1x1, 1x2, 2x1 or 2x2 (Floor will be placed and the key put in the middle).You may only have 1 type of each key!</td>
+			<th><span class="pad A"></span></th>
+			<th>Pad</th>
+			<td>Same as key - but does not disappear on use. Requires constant pressure to be used.</td>
 		</tr>
 		<tr>
-			<th><span class="deathzone"></span></th>
-			<th>Death Zone</th>
-			<td>Used to kill the player. Be crafty in how you place these ;)</td>
+			<th><span class="boulder"></span></th>
+			<th>Boulder</th>
+			<td>Can be pushed around maze. Can be used on Pads</td>
 		</tr>
 		<tr>
-			<th><span class="spawn"></span></th>
-			<th>Spawn</th>
-			<td>Player starts here. Requirement of 1 per map, and must be 2x2.</td>
+			<th><span class="udboulder"></span></th>
+			<th>Boulder - Up/Down</th>
+			<td>Can be pushed around maze. Only moves up and down (cannot be pushed sideways)</td>
 		</tr>
 		<tr>
-			<th><span class="exit"></span></th>
-			<th>Exit</th>
-			<td>Player finishes here. Requirement of 1 per map, and must be 2x2.</td>
+			<th><span class="lrboulder"></span></th>
+			<th>Boulder - Left/Right</th>
+			<td>Can be pushed around maze. Only moves left and right (cannot be pushed up or down)</td>
 		</tr>
-			
 		</table>
 	</div>
 	<div id="setup">
