@@ -1,4 +1,9 @@
 //Start
+E = {
+	m:document.getElementById("maze"),
+	p:document.getElementById("pallet")
+}
+
 $("#tabs").tabs({
 	select:function(event,ui){
 		if(ui.index==2){
@@ -34,7 +39,7 @@ $(document).ready(function(){
 function error(a){
 	if(a!=null) clearTimeout(error.handle);
 	$("#error").html(a);
-	error.handle = setTimeout("$('#error').html('')",4000);
+	error.handle = setTimeout("$('#error').html('')",2000);
 }
 //Maze Generation
 var mouse = {
@@ -118,16 +123,14 @@ function generate(r,c){
 		for(var y=0;y<c;y++) grid+="<span></span>";
 		grid+="</div>";
 	}
-	$("#maze").html(grid);
+	E.m.innerHTML = grid;
 	relabel();
 	check();
 	return true;
 }
 function relabel(){
-	$("#maze div").each(function(i,e){
-		$(e).unbind();//break up unbind into columns - to use larger maps
-	});
-	$("#maze").children()
+	for(t in E.m.getElementsByTagName('span')) $(t).unbind(); //unbind existing tags to avoid 'double clicks' etc
+	$(E.m).children()
 	.each(function(i,e){
 		e.className = i;
 		$(e).children().each(function(i,e){
@@ -168,7 +171,7 @@ function mouseUp(){
 }
 // Maze Size
 function addUp(){
-	var m = $("#maze")
+	var m = $(E.m)
 	var l = m.children().first().children().length;
 	if(l==0) l=1;
 	var d = "";
@@ -177,42 +180,41 @@ function addUp(){
 	relabel();
 }
 function addDown(){
-	var m = $("#maze")
-	var l = m.children().first().children().length;
+	var l = E.m.children[0].children.length;
 	if(l==0) l=1;
-	var d = "";
-	for(var i=0;i<l;i++) d+="<span></span>";
-	m.append("<div>"+d+"</div>");
+	var d = document.createElement('div');
+	for(var i=0;i<l;i++) d.appendChild(document.createElement('span'));
+	E.m.appendChild(d);
 	relabel();
 }
 function addLeft(){
-	$("#maze").children().each(function(i,e){
-		$(e).prepend("<span></span>");
+	$(E.m).children().each(function(i,e){
+		$(e).prepend(document.createElement('span'));
 	});
 	relabel();
 }
 function addRight(){
-	$("#maze").children().each(function(i,e){
-		$(e).append("<span></span>");
+	$(E.m).children().each(function(i,e){
+		$(e).append(document.createElement('span'));
 	});
 	relabel();
 }
 function removeUp(){
-	$("#maze").children().first().remove();
+	$(E.m).children().first().remove();
 	relabel();
 }
 function removeDown(){
-	$("#maze").children().last().remove();
+	$(E.m).children().last().remove();
 	relabel();
 }
 function removeLeft(){
-	$("#maze").children().each(function(i,e){
+	$(E.m).children().each(function(i,e){
 			$(e).children().first().remove();
 		});
 	relabel();
 }
 function removeRight(){
-	$("#maze").children().each(function(i,e){
+	$(E.m).children().each(function(i,e){
 			$(e).children().last().remove();
 		});
 	relabel();
@@ -220,7 +222,7 @@ function removeRight(){
 //Saving/Loading
 function exportLevel(){
 	var data = "";
-	$("#maze").children()
+	$(E.m).children()
 	.each(function(i,e){
 		e.className = i;
 		$(e).children().each(function(i,e){
@@ -235,12 +237,12 @@ function exportLevel(){
 	$("textarea")[0].value = document.getElementById('mapname').value+"\n"+document.getElementById('creator').value+"\n"+data;
 }
 function importLevel(){
-	var backup = $("#maze")[0].innerHTML;
+	var backup = E.m.innerHTML;
 	var importData = $("textarea")[0].value.split('\n');
 	var mapname = importData.shift();
 	var creator = importData.shift();
 	importData = importData.join('\n').split('');
-	$("#maze").html("<div>"+
+	$(E.m).html("<div>"+
 		$.map(importData,function(n){
 			if(n=="\n") return "</div><div>";
 			var data;
@@ -253,7 +255,7 @@ function importLevel(){
 		}).join('')
 	+"</div>");
 	importLevel.count = 0;
-	$("#maze").children().each(function(i,e){
+	$(E.m).children().each(function(i,e){
 		var l = $(e).children().length;
 		if(l==0) $(e).remove(); //delete 'blank lines'
 		else if(importLevel.count==0) importLevel.count = l; //if standard isn't set - set it.
@@ -263,7 +265,7 @@ function importLevel(){
 		}
 	});
 	if(importLevel.count==0){ //if 0 - no data or failed, then throw error.
-		$("#maze").html(backup);
+		$(E.m).html(backup);
 		return false;
 	}
 	document.getElementById("mapname").value = mapname;
@@ -277,10 +279,10 @@ function check(){
 	var p = [];
 
 	//Floor
-	if($("#maze .floor").length==0) p.push("There is no floor");
+	if($(".floor",E.m).length==0) p.push("There is no floor");
 	
 	//1 spawn point
-	var e = $("#maze .spawn")//for jq objects
+	var e = $(".spawn",E.m)//for jq objects
 	var l = e.length;// a foor lengths
 	if(l==0) p.push("Needs a spawn point");
 	else if(l<4) p.push("Spawn must be 2X2");
@@ -288,7 +290,7 @@ function check(){
 	else if(!is2x2(e)) p.push("Spawn blocks must be 2X2");
 	
 	//1 spawn point
-	e = $("#maze .exit")//for jq objects
+	e = $(".exit",E.m)//for jq objects
 	l = e.length;// a foor lengths
 	if(l==0) p.push("Needs an exit point");
 	else if(l<4) p.push("Exit must be 2X2");
@@ -298,12 +300,12 @@ function check(){
 	//each key has at least 1 door
 	var keytypes = ['A','B','C','D','E','F','G','H','I','J'];
 	for(a in keytypes){
-		var keys = $("#maze .key."+keytypes[a]);
+		var keys = $(".key."+keytypes[a],E.m);
 		if(keys.length!=0){
 			if(!((keys.length==1) || (keys.length==2 && is2x1(keys)) || keys.length==4 && is2x2(keys)))
 				p.push("Key "+(parseInt(a)+1)+" is an invalid shape");
-			if($("#maze .door."+keytypes[a]).length==0) p.push("Key "+(parseInt(a)+1)+" has no door");
-		} else if($("#maze .door."+keytypes[a]).length!=0)
+			if($(".door."+keytypes[a],E.m).length==0) p.push("Key "+(parseInt(a)+1)+" has no door");
+		} else if($(".door."+keytypes[a],E.m).length!=0)
 			p.push("Door "+(parseInt(a)+1)+" has no key");
 	}
 	$(".warningCount").html(p.length);
