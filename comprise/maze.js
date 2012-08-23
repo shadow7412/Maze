@@ -272,6 +272,7 @@ function importLevel(){
 	document.getElementById("mapname").value = mapname;
 	document.getElementById("creator").value = creator;
 	document.getElementById("theme").value = theme;
+	if(document.getElementById("theme").value == "") document.getElementById("theme").value = "Castle";
 	relabel();
 	check();
 	return true;
