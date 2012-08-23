@@ -3,7 +3,7 @@
 <head>
 <title>aMAZEing Editor</title>
 <link rel="stylesheet" type="text/css" href="comprise/maze.css" />
-<link rel="stylesheet" type="text/css" id="theme" href="comprise/blocks.css" />
+<link rel="stylesheet" type="text/css" id="themecss" href="comprise/blocks.css" />
 <link rel="stylesheet" type="text/css" href="comprise/jquery.github_badge.css" />
 <link rel="stylesheet" type="text/css" href="comprise/jquery-ui-1.8.22.custom.css" />
 <script src="comprise/jquery-1.7.2.min.js"></script>
@@ -115,10 +115,15 @@
 		<table>
 		<tr><td>Map Name:</td><td><input id="mapname" name="mapname" value="New Map"/></td></tr>
 		<tr><td>Artist</td><td><input id="creator" name="creator" value="Anonymous"/></td></tr>
+		<tr><td>Theme</td><td>
+			<select style="width:100%" id="theme" name="theme"/>
+				<option value="Castle">Castle</option>
+			</select>
+		</td></tr>
 		</table>
 		<br/>
 		Generate Maze:<br/>
-		(This will delete any progress you have made)<br/>
+		(This will create a new blank grid)<br/>
 		<form action="javascript:$('#maze').html('');alert('The browser could not generate a map this large. Try a smaller map!');" onsubmit="if(generate(this.col.value,this.row.value)) $('#tabs').tabs('select', 2);return false;">
 			<table>
 			<tr><td>Columns:</td><td><input name="col" value="20"></td></tr>

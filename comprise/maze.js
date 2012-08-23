@@ -234,13 +234,14 @@ function exportLevel(){
 		});
 		data+="\n";
 	});
-	$("textarea")[0].value = document.getElementById('mapname').value+"\n"+document.getElementById('creator').value+"\n"+data;
+	$("textarea")[0].value = document.getElementById('mapname').value+"\n"+document.getElementById('creator').value+"\n"+document.getElementById('theme').value+'\n'+data;
 }
 function importLevel(){
 	var backup = E.m.innerHTML;
 	var importData = $("textarea")[0].value.split('\n');
 	var mapname = importData.shift();
 	var creator = importData.shift();
+	var theme = importData.shift();
 	importData = importData.join('\n').split('');
 	$(E.m).html("<div>"+
 		$.map(importData,function(n){
@@ -270,6 +271,7 @@ function importLevel(){
 	}
 	document.getElementById("mapname").value = mapname;
 	document.getElementById("creator").value = creator;
+	document.getElementById("theme").value = theme;
 	relabel();
 	check();
 	return true;
