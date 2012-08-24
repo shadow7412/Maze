@@ -173,18 +173,24 @@ function mouseUp(){
 function addUp(){
 	var m = $(E.m)
 	var l = m.children().first().children().length;
-	if(l==0) l=1;
-	var d = "";
-	for(var i=0;i<l;i++) d+="<span></span>";
-	m.prepend("<div>"+d+"</div>");
+	if(l==0){
+		E.m.innerHTML = "<div><span></span></div>";
+	} else {
+		var d = "";
+		for(var i=0;i<l;i++) d+="<span></span>";
+		m.prepend("<div>"+d+"</div>");
+	}
 	relabel();
 }
 function addDown(){
 	var l = E.m.children[0].children.length;
-	if(l==0) l=1;
-	var d = document.createElement('div');
-	for(var i=0;i<l;i++) d.appendChild(document.createElement('span'));
-	E.m.appendChild(d);
+	if(l==0){
+		E.m.innerHTML = "<div><span></span></div>";
+	} else {
+		var d = document.createElement('div');
+		for(var i=0;i<l;i++) d.appendChild(document.createElement('span'));
+		E.m.appendChild(d);
+	}
 	relabel();
 }
 function addLeft(){
