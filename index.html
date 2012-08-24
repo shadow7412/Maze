@@ -180,14 +180,14 @@
 			<div id="paint">
 				<span title="Wall" class="wall active" onmousedown="brush(this)"></span>
 				<span title="Floor" class="floor" onmousedown="brush(this)"></span>
-				<span title="Weak Breakable Wall" class="weakbreak notavail" onmousedown="brush(this)"></span>
+				<span title="Weak Breakable Wall" class="weakbreak" onmousedown="brush(this)"></span>
 				<span title="Breakable Wall" class="break" onmousedown="brush(this)"></span>
 				<span title="Door - Open" class="door open" onmousedown="brush(this)"></span>
 				<span title="Door - Closed" class="door closed" onmousedown="brush(this)"></span>
 				<span title="Key" class="key" onmousedown="brush(this)"></span>
 				<span title="Pad" class="pad notavail" onmousedown="brush(this)"></span>
 				<span title="Void" onmousedown="brush(this)"></span>
-				<span title="Coin" class="coin notavail" onmousedown="brush(this)"></span>
+				<span title="Coin" class="coin" onmousedown="brush(this)"></span>
 				<span title="Spawn" class="spawn" onmousedown="brush(this)"></span>
 				<span title="Exit" class="exit" onmousedown="brush(this)"></span>
 				<span title="Death Zone" class="deathzone" onmousedown="brush(this)"></span>
@@ -212,17 +212,17 @@
 			</div>
 			Add row/column
 			<div>
-				<button onclick="addUp()">Up</button>
-				<button onclick="addDown()">Down</button>
-				<button onclick="addLeft()">Left</button>
-				<button onclick="addRight()">Right</button>
+				<button onclick="addUp()">&uarr;</button><br/>
+				<button onclick="addLeft()">&larr;</button>
+				<button onclick="addDown()">&darr;</button>
+				<button onclick="addRight()">&rarr;</button>
 			</div>
 			Remove row/column
 			<div>
-				<button onclick="removeUp()">Up</button>
-				<button onclick="removeDown()">Down</button>
-				<button onclick="removeLeft()">Left</button>
-				<button onclick="removeRight()">Right</button>
+				<button onclick="removeUp()">&uarr;</button><br/>
+				<button onclick="removeLeft()">&larr;</button>
+				<button onclick="removeDown()">&darr;</button>
+				<button onclick="removeRight()">&rarr;</button>
 			</div>
 			Quicksave:
 			<div>
